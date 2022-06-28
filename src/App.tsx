@@ -1,8 +1,17 @@
+import { Table } from 'antd';
+import { ColumnsType } from 'antd/lib/table';
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
 
-function App() {
+const columns: ColumnsType<{}> = [
+  {
+    key: 1,
+    title: 'first column',
+    dataIndex: 'first',
+  }
+]
+
+const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +27,7 @@ function App() {
         >
           Learn React
         </a>
+        <Table columns={columns}/>
       </header>
     </div>
   );
