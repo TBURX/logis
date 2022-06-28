@@ -23,7 +23,7 @@ interface IProps{
 const Map:React.FC<IProps> = (props)=>{
     const {latlng} = props;
     return <MapContainer  style={{width: 500, height: 400}} center={latlng} zoom={15}>
-        <TileLayer 
+        <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
