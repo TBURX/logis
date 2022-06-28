@@ -1,36 +1,23 @@
-import { Table } from 'antd';
-import { ColumnsType } from 'antd/lib/table';
-import React from 'react';
-import logo from './logo.svg';
-
-const columns: ColumnsType<{}> = [
-  {
-    key: 1,
-    title: 'first column',
-    dataIndex: 'first',
-  }
-]
+import { LatLngExpression } from 'leaflet';
+import React, { useCallback, useState } from 'react';
+import './App.css';
+import DestinationSelector from './components/DestinationSelector';
+import Map from './components/Map';
+import { points } from './constants';
 
 const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Table columns={columns}/>
-      </header>
-    </div>
-  );
+  const [latlng, setLatlng] = useState<LatLngExpression>(points[Object.keys(points)[0]]);
+
+  const handleChange = useCallback((val: string)=>{
+    setLatlng(points[val]);
+    console.log(val);
+  },[]);
+
+  return <>
+    <DestinationSelector onChange={handleChange}/>
+    <Map latlng={latlng}/>
+  </>
+  ;
 }
 
 export default App;
