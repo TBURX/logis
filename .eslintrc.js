@@ -6,10 +6,6 @@ module.exports = {
     'airbnb',
     'airbnb-typescript',
     'prettier',
-    'prettier/@typescript-eslint',
-    'prettier/react',
-    'prettier/@typescript-eslint',
-    'prettier/react',
   ],
   env: {
     browser: true,
@@ -24,6 +20,7 @@ module.exports = {
     },
     ecmaVersion: 2019,
     sourceType: 'module',
+    project: './tsconfig.json'
   },
   plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks', 'react-perf', 'todo-errors'],
   rules: {
@@ -49,5 +46,9 @@ module.exports = {
         devDependencies: true,
       },
     ],
+    'import/prefer-default-export': 'off',
+    'react/function-component-definition': 'off',
+    'react/require-default-props': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 };

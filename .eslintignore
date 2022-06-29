@@ -1,0 +1,28 @@
+# readme
+readme
+readme/*
+
+# Всегда игнорируем файлы
+**/.DS_Store
+**/*.html
+**/*.md
+**/*.gitignore
+**/*.xml
+**/*.log
+**/*.ico
+**/*.less
+**/*.css
+**/*.json
+**/*.svg
+**/*.gif
+**/*.snap
+**/*.txt
+**/*.ttf
+**/*.woff
+**/*.woff2
+**/*.lock
+**/*.spec.ts
+**/*.spec.tsx
+jest.config.*
+
+.eslintrc.js
