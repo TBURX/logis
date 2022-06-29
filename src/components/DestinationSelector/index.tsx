@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Select } from 'antd';
-import 'antd/dist/antd.css';
 import { points } from '../../constants';
 
 const { Option } = Select;

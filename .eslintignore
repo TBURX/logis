@@ -2,6 +2,9 @@
 readme
 readme/*
 
+# Всегда игнорируем папки
+**/node_modules/**
+
 # Всегда игнорируем файлы
 **/.DS_Store
 **/*.html
@@ -21,8 +24,8 @@ readme/*
 **/*.woff
 **/*.woff2
 **/*.lock
-**/*.spec.ts
-**/*.spec.tsx
+**/*.test.ts
+**/*.test.tsx
 jest.config.*
 
 .eslintrc.js

@@ -50,5 +50,6 @@ module.exports = {
     'react/function-component-definition': 'off',
     'react/require-default-props': 'off',
     'react/jsx-props-no-spreading': 'off',
+    '@typescript-eslint/no-unused-expressions': 'off',
   },
 };
