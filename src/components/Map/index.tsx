@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { MapContainer, Polyline, Popup, TileLayer, useMapEvents } from 'react-leaflet';
-import { LatLngExpression } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { useSelector } from 'react-redux';
 import Marker from '../Marker';
+import selectors from '../../store/app/selectors';
 
-const MapProvider: React.FC<Partial<IProps>> = ({ latlng }) => {
+const MapProvider: React.FC = () => {
+  const latlng = useSelector(selectors.latlng);
   const map = useMapEvents({
     click(e) {
       map.flyTo(e.latlng);
@@ -17,13 +19,9 @@ const MapProvider: React.FC<Partial<IProps>> = ({ latlng }) => {
   return null;
 };
 
-interface IProps {
-  latlng: LatLngExpression;
-  polyline?: LatLngExpression[];
-}
-
-const Map: React.FC<IProps> = (props) => {
-  const { latlng, polyline } = props;
+const Map: React.FC = () => {
+  const latlng = useSelector(selectors.latlng);
+  const polyline = useSelector(selectors.polyline);
   return (
     <MapContainer style={{ height: '100%', width: '1000px' }} center={latlng} zoom={15}>
       <TileLayer
@@ -42,7 +40,7 @@ const Map: React.FC<IProps> = (props) => {
           </Marker>
         </>
       )}
-      <MapProvider {...props} />
+      <MapProvider />
     </MapContainer>
   );
 };
