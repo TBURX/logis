@@ -1,1 +1,11 @@
-export type IMap<T> = { [key: string | number]: T };
+import { LatLngTuple } from 'leaflet';
+
+export interface MapPoint {
+  name: string;
+  latlng: LatLngTuple;
+}
+
+export interface Order {
+  from: MapPoint;
+  to: MapPoint;
+}
