@@ -15,3 +15,8 @@ code {
 #root {
   height: 100%;
 }
+
+.ant-btn.selected {
+  color: #40a9ff;
+  border-color:#40a9ff;
+}

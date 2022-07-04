@@ -1,6 +1,7 @@
 import { ColumnType } from 'antd/lib/table';
 import { GetComponentProps } from 'rc-table/lib/interface';
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { orderActions } from '../../saga/order';
 import selectors from '../../store/app/selectors';
@@ -8,6 +9,7 @@ import { IOrderRow } from '../../types';
 import DestinationSelector from '../DestinationSelector';
 
 export const useOrders = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const orders = useSelector(selectors.orders);
   const selectedOrder = useSelector(selectors.selectedOrderindex);
@@ -42,12 +44,12 @@ export const useOrders = () => {
   });
   const columns: ColumnType<IOrderRow>[] = [
     {
-      title: 'точка погрузки',
+      title: t('from'),
       dataIndex: 'from',
       key: 'from',
     },
     {
-      title: 'точка выгрузки',
+      title: t('to'),
       dataIndex: 'to',
       key: 'to',
     },

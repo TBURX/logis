@@ -2,6 +2,7 @@ import * as React from 'react';
 import { MapContainer, Polyline, Popup, TileLayer, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import Marker from '../Marker';
 import selectors from '../../store/app/selectors';
 
@@ -27,6 +28,7 @@ const MapProvider: React.FC = () => {
 };
 
 const Map: React.FC = () => {
+  const { t } = useTranslation();
   const latlng = useSelector(selectors.latlng);
   const polyline = useSelector(selectors.polyline);
   return (
@@ -40,10 +42,10 @@ const Map: React.FC = () => {
         <>
           <Polyline pathOptions={{ color: 'red' }} positions={polyline} />
           <Marker position={polyline[0]}>
-            <Popup offset={[0, -41]}>Точка загрузки</Popup>
+            <Popup offset={[0, -41]}>{t('from')}</Popup>
           </Marker>
           <Marker position={polyline[polyline.length - 1]}>
-            <Popup offset={[0, -41]}>Точка выгрузки</Popup>
+            <Popup offset={[0, -41]}>{t('to')}</Popup>
           </Marker>
         </>
       )}

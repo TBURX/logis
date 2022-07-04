@@ -1,0 +1,9 @@
+{
+    "from": "Точка погрузки",
+    "to": "Точка выгрузки",
+    "point.Perm_prikamye": "Пермь, отель \"Прикамье\"",
+    "point.Moscow_cathedral": "Москва, Храм Христа Спасителя",
+    "point.SPB_palace_square": "Санкт-Петербург, Дворцовая площадь",
+    "point.Kazan_kremlin": "Казань, Кремль",
+    "point.Novotroitsk_central_market": "Новотроицк, центральный рынок"
+}
