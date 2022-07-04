@@ -28,4 +28,4 @@ readme/*
 **/*.test.tsx
 jest.config.*
 
-.eslintrc.js
+*.js

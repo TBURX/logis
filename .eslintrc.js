@@ -52,5 +52,6 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     '@typescript-eslint/no-unused-expressions': 'off',
     'no-param-reassign': 'off',
+    'react/no-array-index-key': 'off',
   },
 };

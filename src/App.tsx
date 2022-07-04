@@ -1,27 +1,13 @@
-import { Button } from 'antd';
-import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import * as React from 'react';
 import SplitterLayout from 'react-splitter-layout';
-import DestinationSelector from './components/DestinationSelector';
 import Map from './components/Map';
-import { getTrackCreator } from './saga/track';
+import OrdersPanel from './components/OrdersPanel';
 
-const App: React.FC = () => {
-  const dispatch = useDispatch();
-
-  const handlePolyline = useCallback(async () => {
-    dispatch(getTrackCreator());
-  }, []);
-
-  return (
-    <SplitterLayout>
-      <>
-        <DestinationSelector />
-        <Button onClick={handlePolyline}>request</Button>
-      </>
-      <Map />
-    </SplitterLayout>
-  );
-};
+const App: React.FC = () => (
+  <SplitterLayout>
+    <OrdersPanel />
+    <Map />
+  </SplitterLayout>
+);
 
 export default App;

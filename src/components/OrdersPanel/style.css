@@ -1,0 +1,9 @@
+.orders-panel {
+    padding: 14px;
+}
+.orders-buttons {
+    margin-bottom: 14px;
+}
+.orders-buttons > button {
+    margin-left: 8px;
+}

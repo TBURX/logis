@@ -1,19 +1,28 @@
 import * as React from 'react';
 import { Select } from 'antd';
-import { useDispatch } from 'react-redux';
 import { defaultPointName, points } from '../../constants';
-import { actions } from '../../store/app/slice';
 
 const { Option } = Select;
 
-const DestinationSelector: React.FC = () => {
-  const dispatch = useDispatch();
+interface IProps {
+  value?: string;
+  onChange?: (value: string) => void;
+  key: string;
+}
+
+const DestinationSelector: React.FC<IProps> = ({ value, onChange, key }) => {
   const handleChange = React.useCallback((val: string) => {
-    dispatch(actions.setLatlng(points.filter((p) => p.name === val)[0].latlng));
+    onChange?.(val);
   }, []);
 
   return (
-    <Select defaultValue={defaultPointName} style={{ width: '120px' }} onChange={handleChange}>
+    <Select
+      defaultValue={defaultPointName}
+      value={value}
+      style={{ width: '100%' }}
+      onChange={handleChange}
+      key={key}
+    >
       {points.map((p) => {
         const { name } = p;
         return <Option value={name}>{name}</Option>;

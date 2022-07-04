@@ -7,15 +7,22 @@ import selectors from '../../store/app/selectors';
 
 const MapProvider: React.FC = () => {
   const latlng = useSelector(selectors.latlng);
+  const polyline = useSelector(selectors.polyline);
   const map = useMapEvents({
     click(e) {
       map.flyTo(e.latlng);
-      console.log('fly to', e.latlng);
     },
   });
+  // так нормально отрабатывает рендер карты во всю панель
+  setInterval(() => {
+    map.invalidateSize();
+  }, 400);
   React.useEffect(() => {
     latlng && map.flyTo(latlng, 15);
   }, [latlng, map]);
+  React.useEffect(() => {
+    polyline && map.closePopup();
+  }, [polyline, map]);
   return null;
 };
 
@@ -23,7 +30,7 @@ const Map: React.FC = () => {
   const latlng = useSelector(selectors.latlng);
   const polyline = useSelector(selectors.polyline);
   return (
-    <MapContainer style={{ height: '100%', width: '1000px' }} center={latlng} zoom={15}>
+    <MapContainer style={{ height: '100%' }} center={latlng} zoom={15}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

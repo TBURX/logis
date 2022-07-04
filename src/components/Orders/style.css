@@ -1,0 +1,6 @@
+.ant-table-row.selected,  .ant-table-tbody > tr.ant-table-row.selected:hover > td, .ant-table-tbody > tr.selected > td.ant-table-cell-row-hover > td {
+    background-color: indigo;
+}
+.ant-table {
+    overflow: auto;
+}

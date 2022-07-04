@@ -1,18 +1,25 @@
-import { Action } from '@reduxjs/toolkit';
+import { createAction } from '@reduxjs/toolkit';
 import { LatLngTuple } from 'leaflet';
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { getRoute } from '../bi';
-import { points } from '../constants';
+import selectors from '../store/app/selectors';
 import { actions } from '../store/app/slice';
+import { Order } from '../types';
 
 const GET_TRACK = 'GET_TRACK';
-export const getTrackCreator = (): Action => ({ type: GET_TRACK });
+const getTrack = createAction(GET_TRACK);
+
+export const trackActions = {
+  getTrack,
+};
 
 function* getTrackWorker() {
-  const route: LatLngTuple[] = yield call(
-    getRoute,
-    points.map((p) => p.latlng),
-  );
+  const selectedOrder: Order = yield select(selectors.selectedOrder);
+  if (!selectedOrder) return;
+  const route: LatLngTuple[] = yield call(getRoute, [
+    selectedOrder.from.latlng,
+    selectedOrder.to.latlng,
+  ]);
   yield put(actions.setPolyline(route));
 }
 

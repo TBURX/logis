@@ -1,10 +1,11 @@
-// import { Row, Table } from 'antd';
-// import { ColumnType } from 'antd/lib/table';
-// import * as React from 'react';
+import { Table } from 'antd';
+import * as React from 'react';
+import { useOrders } from './useOrders';
+import './style.css';
 
-// const columns:ColumnType<number> = {
+const Orders: React.FC = () => {
+  const { dataSource, onRow, columns } = useOrders();
+  return <Table columns={columns} dataSource={dataSource} onRow={onRow} />;
+};
 
-// }
-
-// const Orders: FC = ()=><Table columns={}/>
-export const asdfasndlfhsladkfn = 5;
+export default Orders;
