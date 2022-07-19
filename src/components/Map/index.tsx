@@ -1,29 +1,35 @@
 import * as React from 'react';
 import { MapContainer, Polyline, Popup, TileLayer, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import Marker from '../Marker';
 import selectors from '../../store/app/selectors';
+import { actions } from '../../store/app/slice';
 
 const MapProvider: React.FC = () => {
   const latlng = useSelector(selectors.latlng);
   const polyline = useSelector(selectors.polyline);
+  const resized = useSelector(selectors.resized);
+  const dispatch = useDispatch();
   const map = useMapEvents({
     click(e) {
       map.flyTo(e.latlng);
     },
   });
-  // так нормально отрабатывает рендер карты во всю панель
-  setInterval(() => {
-    map.invalidateSize();
-  }, 400);
   React.useEffect(() => {
     latlng && map.flyTo(latlng, 15);
   }, [latlng, map]);
   React.useEffect(() => {
     polyline && map.closePopup();
   }, [polyline, map]);
+  React.useEffect(() => {
+    resized &&
+      (() => {
+        map.invalidateSize();
+        dispatch(actions.setResized(false));
+      })();
+  }, [resized, map]);
   return null;
 };
 

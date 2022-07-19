@@ -9,6 +9,7 @@ const initialState: IState = {
   polyline: [],
   orders: [],
   selectedOrder: undefined,
+  resized: false,
 };
 
 export const { actions, reducer } = createSlice({
@@ -37,6 +38,9 @@ export const { actions, reducer } = createSlice({
     setTo(state: IState, { payload }: PayloadAction<{ value: MapPoint; index: number }>) {
       const { value, index } = payload;
       state.orders[index].to = value;
+    },
+    setResized(state: IState, { payload }: PayloadAction<boolean>) {
+      state.resized = payload;
     },
   },
 });

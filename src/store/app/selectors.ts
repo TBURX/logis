@@ -11,6 +11,7 @@ const selectedOrder = createSelector([orders, selectedOrderindex], (_orders, ord
   if (orderIndex !== undefined && orderIndex >= 0) return _orders[orderIndex];
   return undefined;
 });
+const resized = (state: IState): boolean => state.resized;
 
 export default {
   latlng,
@@ -18,4 +19,5 @@ export default {
   orders,
   selectedOrderindex,
   selectedOrder,
+  resized,
 };

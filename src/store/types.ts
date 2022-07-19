@@ -6,4 +6,5 @@ export interface IState {
   polyline: LatLngExpression[];
   orders: Order[];
   selectedOrder?: number;
+  resized: boolean;
 }
